@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: Arial, sans-serif; /* Set default font */
+        }
+        
+        .navbar {
+            background-color: #00a65a; /* Dark green navbar */
+            border: none;
+            border-radius: 0;
+        }
+        
+        .navbar-brand, .navbar-nav li a {
+            color: white; /* White text color for navbar items */
+        }
+        
+        .navbar-brand:hover, .navbar-nav li a:hover {
+            color: #e6e6e6; /* Light gray text color on hover */
+        }
+        
+        .card {
+            background-color: #fff; /* White background for cards */
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+            transition: box-shadow 0.3s; /* Smooth transition for box-shadow */
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .book-title {
+            font-size: 20px;
+            color: #333; /* Dark gray text color */
+            margin-bottom: 10px;
+        }
+        
+        .book-author {
+            font-size: 16px;
+            color: #666; /* Medium gray text color */
+            margin-bottom: 5px;
+        }
+        
+        .book-info {
+            font-size: 14px;
+            color: #888; /* Light gray text color */
+            margin-bottom: 5px;
+        }
+
+        .book-img {
+            max-height: 200px; /* Set max height for book images */
+            margin: 0 auto; /* Center align book images */
+            display: block; /* Ensure proper block-level display */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">My Book Recommender</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center" style="font-size:50px; margin-bottom: 40px;">Top 50 Books</h1>
+            </div>
+
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top book-img" src="{{ image[i] }}">
+                        <div class="card-body">
+                            <p class="book-title">{{ book_name[i] }}</p>
+                            <p class="book-author">{{ author[i] }}</p>
+                            <p class="book-info">Votes: {{ votes[i] }}</p>
+                            <p class="book-info">Rating: {{ rating[i] }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
+
